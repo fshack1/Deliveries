@@ -14,7 +14,6 @@ class DeliveriesTest < ApplicationSystemTestCase
     visit deliveries_url
     click_on "New delivery"
 
-    fill_in "Cost", with: @delivery.cost
     fill_in "Delivery address", with: @delivery.delivery_address
     fill_in "Distance", with: @delivery.distance
     fill_in "Driver name", with: @delivery.driver_name
@@ -23,7 +22,7 @@ class DeliveriesTest < ApplicationSystemTestCase
     fill_in "Weight", with: @delivery.weight
     click_on "Create Delivery"
 
-    assert_text "Delivery was successfully created"
+    assert_text "Delivery was scheduled successfully"
     click_on "Back"
   end
 
@@ -31,7 +30,6 @@ class DeliveriesTest < ApplicationSystemTestCase
     visit delivery_url(@delivery)
     click_on "Edit this delivery", match: :first
 
-    fill_in "Cost", with: @delivery.cost
     fill_in "Delivery address", with: @delivery.delivery_address
     fill_in "Distance", with: @delivery.distance
     fill_in "Driver name", with: @delivery.driver_name
