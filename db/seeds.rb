@@ -38,4 +38,3 @@
     driver_name: delivery_data[:driver_name]
   )
 end
-

@@ -64,7 +64,6 @@ class DeliveriesController < ApplicationController
     end
   end
 
-  
   private def set_delivery
       @delivery = Delivery.find(params.expect(:id))
     end
