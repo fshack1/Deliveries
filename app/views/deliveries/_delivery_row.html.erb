@@ -11,7 +11,6 @@
   <td><%= delivery.driver_name %></td>
   <td>
     <%= link_to "Show", delivery %> |
-    <%= link_to "Edit", edit_delivery_path(delivery), data: { turbo_frame: "deliveries" } %> |
-    <%= link_to "Delete", delivery, method: :delete, data: { confirm: "Are you sure?" }, data: { turbo_frame: "deliveries" } %>
+    <%= link_to "Edit", edit_delivery_path(delivery) %> |
   </td>
 </tr>
