@@ -1,0 +1,6 @@
+@import "blankslate";
+@import "pagy";
+
+body {
+  font-family: Arial, sans-serif;
+}
