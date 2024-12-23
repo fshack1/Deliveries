@@ -17,6 +17,7 @@
 # Ignore secrets and credentials
 /config/master.key
 /config/credentials.yml.enc
+.kamal/secrets
 
 # Ignore compiled assets
 /public/assets
