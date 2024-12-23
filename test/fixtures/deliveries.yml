@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pickup_address: MyString
+  delivery_address: MyString
+  weight: 9.99
+  distance: 9.99
+  scheduled_time: 2024-12-22 17:14:59
+  cost: 9.99
+  driver_name: MyString
+
+two:
+  pickup_address: MyString
+  delivery_address: MyString
+  weight: 9.99
+  distance: 9.99
+  scheduled_time: 2024-12-22 17:14:59
+  cost: 9.99
+  driver_name: MyString
