@@ -6,6 +6,7 @@ class DeliveriesController < ApplicationController
   # GET /deliveries
   def index
     @pagy, @records = pagy(Delivery.all.order(created_at: :desc), limit: 2)
+    @total_cost = Delivery.sum(:cost)
   end
 
   # GET /deliveries/1
@@ -54,6 +55,16 @@ class DeliveriesController < ApplicationController
     end
   end
 
+  def total_cost
+    deliveries = Delivery.all.order(id: :desc)
+    @total_cost = deliveries.sum(:cost)
+
+    respond_to do |format|
+      format.html { render partial: "cost_breakdown", locals: { deliveries:, total_cost: @total_cost } }
+    end
+  end
+
+  
   private def set_delivery
       @delivery = Delivery.find(params.expect(:id))
     end

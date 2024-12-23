@@ -30,6 +30,14 @@
     <%== pagy_nav(@pagy) %>
     <%== pagy_info(@pagy) %>
   </div>
+
+  <div id="total_cost">
+    <p>
+      <%= link_to total_cost_deliveries_path do %>
+        <%= "Total cost: #{number_to_currency(@total_cost, unit: "€")}" %>
+      <% end %>
+    </p>
+  </div>
 <% else %>
   <%= render(partial: "delivery_blankslate") %>
 <% end %>
