@@ -1,0 +1,16 @@
+<%# locals: (delivery:)  -%>
+
+<tr id="<%= dom_id(delivery) %>">
+  <td><%= delivery.pickup_address %></td>
+  <td><%= delivery.delivery_address %></td>
+  <td><%= delivery.weight %></td>
+  <td><%= delivery.distance %></td>
+  <td><%= delivery.scheduled_time %></td>
+  <td><%= delivery.cost %></td>
+  <td><%= delivery.driver_name %></td>
+  <td>
+    <%= link_to "Show", delivery %> |
+    <%= link_to "Edit", edit_delivery_path(delivery), data: { turbo_frame: "deliveries" } %> |
+    <%= link_to "Delete", delivery, method: :delete, data: { confirm: "Are you sure?" }, data: { turbo_frame: "deliveries" } %>
+  </td>
+</tr>

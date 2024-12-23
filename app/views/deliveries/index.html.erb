@@ -1,23 +1,35 @@
-<%= link_to "New delivery", new_delivery_path %>
+<%= link_to("New delivery", new_delivery_path) %>
 
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Deliveries" %>
+<% content_for(:title, "Deliveries") %>
 
 <h1>Deliveries</h1>
 
-<div id="deliveries">
-  <% @records.each do |delivery| %>
-    <%= render delivery %>
-    <p>
-      <%= link_to "Show this delivery", delivery %>
-    </p>
-  <% end %>
-</div>
-
 <% if @records.any? %>
-  <%== pagy_nav(@pagy) %>
-  <%== pagy_info(@pagy) %>
+  <table>
+    <thead>
+      <tr>
+        <th>Pickup Address</th>
+        <th>Delivery Address</th>
+        <th>Weight</th>
+        <th>Distance</th>
+        <th>Scheduled Time</th>
+        <th>Cost</th>
+        <th>Driver Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |delivery| %>
+        <%= render(partial: "delivery_row", locals: { delivery: delivery }) %>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%== pagy_nav(@pagy) %>
+    <%== pagy_info(@pagy) %>
+  </div>
 <% else %>
   <%= render(partial: "delivery_blankslate") %>
 <% end %>
