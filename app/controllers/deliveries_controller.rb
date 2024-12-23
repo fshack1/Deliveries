@@ -1,12 +1,14 @@
-class DeliveriesController < ApplicationController
-  before_action :set_delivery, only: %i[ show edit update destroy ]
+# frozen_string_literal: true
 
-  # GET /deliveries or /deliveries.json
+class DeliveriesController < ApplicationController
+  before_action :set_delivery, only: %i[show edit update destroy]
+
+  # GET /deliveries
   def index
     @pagy, @records = pagy(Delivery.all.order(created_at: :desc), limit: 2)
   end
 
-  # GET /deliveries/1 or /deliveries/1.json
+  # GET /deliveries/1
   def show
   end
 
@@ -19,52 +21,44 @@ class DeliveriesController < ApplicationController
   def edit
   end
 
-  # POST /deliveries or /deliveries.json
+  # POST /deliveries
   def create
     @delivery = Delivery.new(delivery_params)
 
     respond_to do |format|
       if @delivery.save
-        format.html { redirect_to @delivery, notice: "Delivery was successfully created." }
-        format.json { render :show, status: :created, location: @delivery }
+        format.html { redirect_to @delivery, notice: "Delivery was scheduled successfully." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @delivery.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /deliveries/1 or /deliveries/1.json
+  # PATCH/PUT /deliveries/1
   def update
     respond_to do |format|
       if @delivery.update(delivery_params)
         format.html { redirect_to @delivery, notice: "Delivery was successfully updated." }
-        format.json { render :show, status: :ok, location: @delivery }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @delivery.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /deliveries/1 or /deliveries/1.json
+  # DELETE /deliveries/1
   def destroy
     @delivery.destroy!
 
     respond_to do |format|
       format.html { redirect_to deliveries_path, status: :see_other, notice: "Delivery was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_delivery
+  private def set_delivery
       @delivery = Delivery.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
-    def delivery_params
+    private def delivery_params
       params.expect(delivery: [ :pickup_address, :delivery_address, :weight, :distance, :scheduled_time, :cost, :driver_name ])
     end
 end
