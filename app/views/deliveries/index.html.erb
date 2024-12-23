@@ -1,0 +1,45 @@
+<%= link_to("New delivery", new_delivery_path) %>
+
+<p style="color: green"><%= notice %></p>
+
+<% content_for(:title, "Deliveries") %>
+
+<h1>Deliveries</h1>
+
+<% if @records.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Pickup Address</th>
+        <th>Delivery Address</th>
+        <th>Weight</th>
+        <th>Distance</th>
+        <th>Scheduled Time</th>
+        <th>Cost</th>
+        <th>Driver Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |delivery| %>
+        <%= render(partial: "delivery_row", locals: { delivery: delivery }) %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div>
+    <%== pagy_nav(@pagy) %>
+    <%== pagy_info(@pagy) %>
+  </div>
+
+  <div id="total_cost">
+    <p>
+      <%= link_to total_cost_deliveries_path do %>
+        <%= "Total cost: #{number_to_currency(@total_cost, unit: "€")}" %>
+      <% end %>
+    </p>
+  </div>
+<% else %>
+  <%= render(partial: "delivery_blankslate") %>
+<% end %>
