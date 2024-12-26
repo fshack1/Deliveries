@@ -1,6 +1,38 @@
-@import "blankslate";
-@import "pagy";
+@import "blankslate.css";
+@import "root_styles.css";
+@import "pagy.css";
+@import "tables.css";
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+.button {
+  background-color: var(--color-status-success);
+  border: none;
+  border-radius: 8px;
+  color: #ffff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: var(--color-bg-current)
+}
+
+.filter-button {  
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  max-width: 200px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
 }

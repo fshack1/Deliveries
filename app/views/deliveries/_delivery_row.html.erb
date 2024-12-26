@@ -1,16 +1,16 @@
 <%# locals: (delivery:)  -%>
 
-<tr id="<%= dom_id(delivery) %>">
-  <td><%= delivery.id %></td>
-  <td><%= delivery.pickup_address %></td>
-  <td><%= delivery.delivery_address %></td>
-  <td><%= delivery.weight %></td>
-  <td><%= delivery.distance %></td>
-  <td><%= delivery.scheduled_time %></td>
-  <td><%= delivery.cost %></td>
-  <td><%= delivery.driver_name %></td>
-  <td>
+<tr class="mdc-data-table__row" id="<%= dom_id(delivery) %>">
+  <td class="mdc-data-table__cell"><%= delivery.id %></td>
+  <td class="mdc-data-table__cell"><%= delivery.pickup_address %></td>
+  <td class="mdc-data-table__cell"><%= delivery.delivery_address %></td>
+  <td class="mdc-data-table__cell"><%= "#{delivery.weight} kg" %></td>
+  <td class="mdc-data-table__cell"><%= "#{delivery.distance} km" %></td>
+  <td class="mdc-data-table__cell"><%= format_time(delivery.scheduled_time) %></td>
+  <td class="mdc-data-table__cell"><%= number_to_currency(delivery.cost, unit: "€") %></td>
+  <td class="mdc-data-table__cell"><%= delivery.driver_name %></td>
+  <td class="mdc-data-table__cell">
     <%= link_to "Show", delivery %> |
-    <%= link_to "Edit", edit_delivery_path(delivery) %> |
+    <%= link_to "Edit", edit_delivery_path(delivery) %>
   </td>
 </tr>

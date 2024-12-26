@@ -1,0 +1,57 @@
+.table-container {
+  margin: 0 auto;
+  width: auto;
+}
+
+.mdc-data-table__header-cell,
+.mdc-data-table__cell {
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.mdc-data-table__cell {
+  padding: 8px;
+}
+
+.mdc-pagination {
+  padding-bottom: 8px;
+}
+
+.mdc-data-table__pagination-trailing, .mdc-data-table__pagination-info {
+  padding-right: 8px;
+}
+
+.mdc-data-table__pagination-info {
+  float: right;
+}
+
+.mdc-data-table {
+  table-layout: fixed;
+}
+
+.mdc-data-table__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-filter-container {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  padding-bottom: 5px;
+}
+
+@media (max-width: 1000px) {
+  .table-container {
+    width: fit-content;
+  }
+
+  .mdc-data-table {
+    width: 100%;
+    table-layout: auto;
+  }
+
+  .mdc-data-table__table {
+    width: auto;
+  }
+}

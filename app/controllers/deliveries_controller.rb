@@ -5,7 +5,18 @@ class DeliveriesController < ApplicationController
 
   # GET /deliveries
   def index
-    @pagy, @records = pagy(Delivery.all.order(created_at: :desc), limit: 2)
+    @total_records = Delivery.all
+    deliveries = @total_records
+
+    if params[:driver_name].present?
+      deliveries = deliveries.where(driver_name: params[:driver_name])
+    end
+
+    if params[:pickup_address].present?
+      deliveries = deliveries.where(pickup_address: params[:pickup_address])
+    end
+
+    @pagy, @records = pagy(deliveries.order(created_at: :desc), limit: 3)
     @total_cost = Delivery.sum(:cost)
   end
 
