@@ -12,43 +12,43 @@
 
   <div class="mdc-text-field mdc-text-field--filled">
     <span class="mdc-text-field__ripple"></span>
-    <%= form.text_field(:pickup_address, class: "mdc-text-field__input", required: true) %>
-    <span class="mdc-floating-label">Pickup address</span>
+    <label for="pickup_address" class="mdc-floating-label">Pickup address</label>
+    <%= form.text_field(:pickup_address, class: "mdc-text-field__input", id: "pickup_address", required: true) %>
     <span class="mdc-line-ripple"></span>
   </div>
 
   <div class="mdc-text-field mdc-text-field--filled">
     <span class="mdc-text-field__ripple"></span>
-    <%= form.text_field(:delivery_address, class: "mdc-text-field__input", required: true) %>
-    <span class="mdc-floating-label">Delivery address</span>
+    <label for="delivery_address" class="mdc-floating-label">Delivery address</label>
+    <%= form.text_field(:delivery_address, class: "mdc-text-field__input",  id: "delivery_address", required: true) %>
     <span class="mdc-line-ripple"></span>
   </div>
 
   <div class="mdc-text-field mdc-text-field--filled">
     <span class="mdc-text-field__ripple"></span>
-    <%= form.number_field(:weight, class: "mdc-text-field__input", min: 0.001, max: 50000, step: "any", required: true) %>
-    <span class="mdc-floating-label">Weight (kg) </span>
+    <label for="weight" class="mdc-floating-label">Weight (kg)</label>
+    <%= form.number_field(:weight, class: "mdc-text-field__input", id: "weight", min: 0.001, max: 50000, step: "any", required: true) %>
     <span class="mdc-line-ripple"></span>
   </div>
 
   <div class="mdc-text-field mdc-text-field--filled">
     <span class="mdc-text-field__ripple"></span>
-    <%= form.number_field(:distance, class: "mdc-text-field__input", min: 0.001, max: 100000000, step: "any", required: true) %>
-    <span class="mdc-floating-label">Distance (km) </span>
+    <label for="distance" class="mdc-floating-label">Distance (km)</label>
+    <%= form.number_field(:distance, class: "mdc-text-field__input", id: "distance", min: 0.001, max: 100000000, step: "any", required: true) %>
     <span class="mdc-line-ripple"></span>
   </div>
 
   <div class="mdc-text-field mdc-text-field--filled">
     <span class="mdc-text-field__ripple"></span>
-    <%= form.datetime_field(:scheduled_time, class: "mdc-text-field__input", min: Time.current.strftime("%Y-%m-%dT%H:%M"), max: (Time.current + 3.years).strftime("%Y-%m-%dT%H:%M"), required: true) %>
-    <span class="mdc-floating-label">Scheduled time</span>
+    <label for="scheduled_time" class="mdc-floating-label">Scheduled time</label>
+    <%= form.datetime_field(:scheduled_time, class: "mdc-text-field__input", id: "scheduled_time", min: Time.current.strftime("%Y-%m-%dT%H:%M"), max: (Time.current + 3.years).strftime("%Y-%m-%dT%H:%M"), required: true) %>
     <span class="mdc-line-ripple"></span>
   </div>
 
   <div class="mdc-text-field mdc-text-field--filled">
     <span class="mdc-text-field__ripple"></span>
-    <%= form.text_field(:driver_name, class: "mdc-text-field__input") %>
-    <span class="mdc-floating-label">Driver name</span>
+    <label for="driver_name" class="mdc-floating-label">Driver name</label>
+    <%= form.text_field(:driver_name, class: "mdc-text-field__input", id: "driver_name") %>
     <span class="mdc-line-ripple"></span>
   </div>
 
