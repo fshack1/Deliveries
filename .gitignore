@@ -32,6 +32,9 @@
 /public/packs-test
 /public/packs-dev
 
+# Ignore Importmap
+/vendor/
+
 # Ignore propshaft build files
 /app/assets/builds
 

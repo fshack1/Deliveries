@@ -1,7 +1,7 @@
 <div class="table-container">
   <h1 style="text-align: center">Deliveries</h1>
   <div style="text-align: right;">
-    <%= button_to("New delivery", new_delivery_path, method: :get, class: "button") %>
+    <%= button_to("New delivery", new_delivery_path, method: :get, class: "mdc-button mdc-button--raised") %>
   </div>
   <% if @records.any? %>
     <%= delivery_filters %>
