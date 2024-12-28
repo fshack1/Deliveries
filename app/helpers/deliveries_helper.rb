@@ -13,7 +13,7 @@ module DeliveriesHelper
         :driver_name,
         options_for_select(Delivery.distinct.pluck(:driver_name).reject(&:blank?).uniq, params[:driver_name]),
         { prompt: "Filter by driver" },
-        { onchange: "this.form.submit()", class: "filter-button"}
+        { onchange: "this.form.submit()", class: "filter-button" }
       )
     end
   end
@@ -24,7 +24,7 @@ module DeliveriesHelper
         :pickup_address,
         options_for_select(Delivery.distinct.pluck(:pickup_address), params[:pickup_address]),
         { prompt: "Filter by pickup" },
-        { onChange: "this.form.submit()", class: "filter-button"}
+        { onChange: "this.form.submit()", class: "filter-button" }
       )
     end
   end
