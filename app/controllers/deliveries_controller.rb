@@ -75,11 +75,24 @@ class DeliveriesController < ApplicationController
     end
   end
 
-  private def set_delivery
-      @delivery = Delivery.find(params.expect(:id))
+  # GET /deliveries/optimized_routes
+  def optimized_routes
+    grouped_deliveries = Delivery.all.group_by(&:pickup_address)
+
+    @optimized_routes = grouped_deliveries.transform_values do |group|
+      group.sort_by(&:distance)
     end
 
-    private def delivery_params
-      params.expect(delivery: [ :pickup_address, :delivery_address, :weight, :distance, :scheduled_time, :cost, :driver_name ])
+    respond_to do |format|
+      format.html { render :optimized_routes, locals: { optimized_routes: @optimized_routes } }
     end
+  end
+
+  private def set_delivery
+    @delivery = Delivery.find(params.expect(:id))
+  end
+
+  private def delivery_params
+    params.require(:delivery).permit(:pickup_address, :delivery_address, :weight, :distance, :scheduled_time, :cost, :driver_name)
+  end
 end

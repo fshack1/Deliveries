@@ -1,0 +1,22 @@
+<%# locals: (deliveries:) -%>
+
+<% deliveries.each do |delivery| %>
+  <%= link_to(delivery_path(delivery)) do %>
+    <div class="delivery-container">
+      <div style="display: flex; flex-direction: row">
+        <span class="text-title material-symbols-outlined" style="padding-right: 5px;">delivery_truck_speed</span>
+        <span class="text-title bold"><%= delivery.delivery_address %></span>
+      </div>
+      <div class="delivery-details text-body">
+        <ul style="list-style: none;">
+          <li><b>ID: </b><%=delivery.id %></li>
+          <li><b>Weight: </b><%= delivery.weight %> kg</li>
+          <li><b>Distance: </b><%= delivery.distance %> km</li>
+          <li><b>Cost: </b><%= number_to_currency(delivery.cost, unit: "€") %></li>
+          <li><b>Time: </b><%= delivery.scheduled_time.strftime("%B %d, %Y %H:%M") %></li>
+          <li><b>Driver: </b><%= delivery.driver_name %></li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+<% end %>

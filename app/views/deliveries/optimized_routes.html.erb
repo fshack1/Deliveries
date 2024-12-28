@@ -1,0 +1,21 @@
+<div>
+  <div class="routes-header">
+    <h1 style="padding-right: 10px">Optimized Routes</h1>
+    <div class="tooltip"
+      aria-label="Information about optimized routes"
+      data-tooltip="Showing routes grouped by pickup address.">
+      <span class="material-symbols-outlined">info</span>
+    </div>
+  </div>
+
+  <div>
+    <% optimized_routes.each do |pickup_address, deliveries| %>
+      <div class="routes-container">
+        <h2 class="text-heading"><%= pickup_address %></h2>
+        <div class="deliveries-container">
+          <%= render(partial: "route", locals: { deliveries: }) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
