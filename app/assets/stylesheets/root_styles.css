@@ -1,0 +1,11 @@
+:root {
+  --color-primary: #6b7280;
+  --color-bg-light: #f9f9f9;
+  --color-bg-hover: #d1d5db;
+  --color-bg-disabled: #f3f4f6;
+  --color-text-disabled: #d1d5db;
+  --color-bg-current: #9ca3af;
+  --color-text-current: #ffffff;
+  --color-status-success: #2f7b2e;
+  --color-status-error: #cd2026;
+}

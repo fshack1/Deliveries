@@ -1,45 +1,20 @@
-<%= link_to("New delivery", new_delivery_path) %>
+<p style="color: var(--color-status-success)"><%= notice %></p>
 
-<p style="color: green"><%= notice %></p>
-
-<% content_for(:title, "Deliveries") %>
-
-<h1>Deliveries</h1>
-
-<% if @records.any? %>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Pickup Address</th>
-        <th>Delivery Address</th>
-        <th>Weight</th>
-        <th>Distance</th>
-        <th>Scheduled Time</th>
-        <th>Cost</th>
-        <th>Driver Name</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @records.each do |delivery| %>
-        <%= render(partial: "delivery_row", locals: { delivery: delivery }) %>
-      <% end %>
-    </tbody>
-  </table>
-
-  <div>
-    <%== pagy_nav(@pagy) %>
-    <%== pagy_info(@pagy) %>
+<div class="table-container">
+  <h1 style="text-align: center">Deliveries</h1>
+  <div style="text-align: right;">
+    <%= button_to("New delivery", new_delivery_path, method: :get, class: "mdc-button mdc-button--raised") %>
   </div>
-
-  <div id="total_cost">
-    <p>
-      <%= link_to total_cost_deliveries_path do %>
-        <%= "Total cost: #{number_to_currency(@total_cost, unit: "€")}" %>
-      <% end %>
-    </p>
-  </div>
-<% else %>
-  <%= render(partial: "delivery_blankslate") %>
-<% end %>
+  <% if @records.any? %>
+    <%= delivery_filters %>
+    <%= render(partial: "deliveries", locals: {records: @records, total_cost: @total_cost, pagy: @pagy}) %>
+  <% elsif @total_records.any? %>
+    <%= delivery_filters %>
+    <%= render(partial: "empty_table") %>
+  <% else %>
+    <%= render(partial: "delivery_blankslate", locals: {
+      title: "No deliveries",
+      body: "You have no scheduled deliveries. Once you have deliveries they will appear here."
+    }) %>
+  <% end %>
+</div>

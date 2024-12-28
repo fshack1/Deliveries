@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :deliveries do
     collection do
+      get :optimized_routes
       get :total_cost
     end
   end

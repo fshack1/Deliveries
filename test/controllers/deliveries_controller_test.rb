@@ -76,4 +76,11 @@ class DeliveriesControllerTest < ActionDispatch::IntegrationTest
     assert_select "table"
     assert_not_nil assigns(:total_cost)
   end
+
+  test "should get optimized routes" do
+    get optimized_routes_deliveries_url
+    assert_response :success
+    assert_select "div.routes-container", minimum: 1
+    assert_not_nil assigns(:optimized_routes)
+  end
 end

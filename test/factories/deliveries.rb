@@ -4,7 +4,7 @@ FactoryBot.define do
     delivery_address { "221B Baker St., London NW1 6XE, United Kingdom" }
     weight { 10 }
     distance { 20 }
-    scheduled_time { Time.zone.now + 1.day }
+    scheduled_time { (Time.zone.now + 1.day).strftime("%Y-%m-%dT%H:%M") }
     cost { 50 }
     driver_name { "Sherlock Holmes" }
   end

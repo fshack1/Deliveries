@@ -1,6 +1,57 @@
-@import "blankslate";
-@import "pagy";
-
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
+  margin: 14px;
+}
+
+.text-body {
+  font-size: 14px;
+  color: black;
+}
+
+.text-title {
+  font-size: 16px;
+  color: black;
+  align-self: center;
+}
+
+.text-heading {
+  font-size: 20px;
+  color: black;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.filter-button {  
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  max-width: 200px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.tooltip {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--color-primary); 
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  font-size: 14px;
+  font-weight: normal;
+  visibility: hidden;
+  left: 50%;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.tooltip:hover::after, .tooltip:focus::after {
+  visibility: visible;
+  opacity: 1;
 }
