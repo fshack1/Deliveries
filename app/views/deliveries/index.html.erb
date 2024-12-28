@@ -12,6 +12,9 @@
     <%= delivery_filters %>
     <%= render(partial: "empty_table") %>
   <% else %>
-    <%= render(partial: "delivery_blankslate") %>
+    <%= render(partial: "delivery_blankslate", locals: {
+      title: "No deliveries",
+      body: "You have no scheduled deliveries. Once you have deliveries they will appear here."
+    }) %>
   <% end %>
 </div>

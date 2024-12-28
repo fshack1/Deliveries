@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <div>
+  <% if optimized_routes.any? %>
     <% optimized_routes.each do |pickup_address, deliveries| %>
       <div class="routes-container">
         <h2 class="text-heading"><%= pickup_address %></h2>
@@ -17,5 +17,10 @@
         </div>
       </div>
     <% end %>
-  </div>
+  <% else %>
+    <%= render(partial: "delivery_blankslate", locals: {
+      title: "No routes",
+      body: "You do not have any scheduled deliveries."
+    }) %>
+  <% end %>
 </div>
