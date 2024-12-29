@@ -1,10 +1,20 @@
 <p style="color: var(--color-status-success)"><%= notice %></p>
 
+<%= link_to(deliveries_path, class: "mdc-button mdc-button--outlined") do %>
+  <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+  Back to deliveries
+<% end %>
+
 <%= render @delivery %>
 
-<div>
-  <%= link_to "Edit this delivery", edit_delivery_path(@delivery) %> |
-  <%= link_to "Back to deliveries", deliveries_path %>
+<div style="display: flex; flex-direction: row; gap: 5px">
+  <%= link_to(edit_delivery_path(@delivery), class: "mdc-button mdc-button--raised") do %>
+    <span class="material-symbols-outlined" aria-hidden="true">edit</span>
+    Edit this delivery
+  <% end %>
 
-  <%= button_to "Destroy this delivery", @delivery, method: :delete %>
+  <%= button_to(@delivery, method: :delete, class: "mdc-button mdc-button--raised", data: { controller: "confirm", action: "click->confirm#confirm" }) do %>
+    <span class="material-symbols-outlined" aria-hidden="true">delete</span>
+    Destroy this delivery
+  <% end %>
 </div>

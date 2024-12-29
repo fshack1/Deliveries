@@ -1,12 +1,19 @@
-<% content_for :title, "Editing delivery" %>
+<% content_for(:title, "Editing delivery") %>
 
 <h1>Editing delivery</h1>
 
-<%= render "form", delivery: @delivery %>
+<%= render("form", delivery: @delivery) %>
 
 <br>
 
-<div>
-  <%= link_to "Show this delivery", @delivery %> |
-  <%= link_to "Back to deliveries", deliveries_path %>
+<div style="display: flex; flex-direction: row; gap: 5px">
+  <%= link_to(@delivery, class: "mdc-button mdc-button--raised", style: "gap: 8px") do %>
+    <span class="material-symbols-outlined" aria-hidden="true">visibility</span>
+    Show this delivery
+  <% end %>
+
+  <%= link_to(deliveries_path, class: "mdc-button mdc-button--outlined") do %>
+  <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+    Back to deliveries
+  <% end %>
 </div>

@@ -1,11 +1,14 @@
-<% content_for :title, "New delivery" %>
+<% content_for(:title, "New delivery") %>
 
 <h1>New delivery</h1>
 
-<%= render "form", delivery: @delivery %>
+<%= render("form", delivery: @delivery) %>
 
 <br>
 
 <div>
-  <%= link_to "Back to deliveries", deliveries_path %>
+  <%= link_to(deliveries_path, class: "mdc-button mdc-button--outlined") do %>
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+    Back to deliveries
+  <% end %>
 </div>

@@ -1,4 +1,11 @@
 <p style="color: var(--color-status-success)"><%= notice %></p>
+<div style="text-align: right">
+  <%= link_to(optimized_routes_deliveries_path, class: "mdc-button mdc-button--outlined") do %>
+    <span class="material-symbols-outlined" aria-hidden="true">map</span>
+    Show optimized routes
+  <% end %>
+</div>
+
 
 <div class="table-container">
   <h1 style="text-align: center">Deliveries</h1>

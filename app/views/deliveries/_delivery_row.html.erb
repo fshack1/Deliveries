@@ -9,8 +9,8 @@
   <td class="mdc-data-table__cell"><%= format_time(delivery.scheduled_time) %></td>
   <td class="mdc-data-table__cell"><%= number_to_currency(delivery.cost, unit: "€") %></td>
   <td class="mdc-data-table__cell"><%= delivery.driver_name %></td>
-  <td class="mdc-data-table__cell">
-    <%= link_to "Show", delivery %> |
-    <%= link_to "Edit", edit_delivery_path(delivery) %>
+  <td class="mdc-data-table__cell text-body bold">
+    <%= link_to("Show", delivery) %> |
+    <%= link_to("Edit", edit_delivery_path(delivery)) %>
   </td>
 </tr>
