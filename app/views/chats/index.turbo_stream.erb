@@ -1,0 +1,14 @@
+<%= turbo_stream.replace("chat-window") do %>
+  <turbo-frame id="chat-window">
+    <div class="chat-window">
+      <button class="material-symbols-outlined" data-action="click->chat#closeChat" aria-label="Close chat">close</button>
+      <%= render(partial: "chats/message", locals: { message: "Ask me anything about the deliveries ...", role: "assistant" }) %>
+      <div class="chat-messages" id="chat_messages"></div>
+      <div class="chat-form">
+        <%= render(partial: "chats/form") %>
+      </div>
+    </div>
+  <turbo-frame>
+<% end %>
+
+<%= turbo_stream.remove("chat-button-frame") %>
