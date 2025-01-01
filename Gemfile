@@ -21,6 +21,13 @@ gem "jbuilder"
 # gem "bcrypt", "~> 3.1.7"
 gem "pagy"
 
+# LLM
+gem "ruby-openai"
+
+# background jobs
+gem "sidekiq"
+gem "sidekiq-scheduler"
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -67,4 +74,5 @@ end
 
 group :development, :test do
   gem "byebug"
+  gem "dotenv-rails"
 end

@@ -18,4 +18,6 @@ Rails.application.routes.draw do
       get :total_cost
     end
   end
+
+  resources :chats, only: [ :index, :create ]
 end
