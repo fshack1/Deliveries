@@ -15,8 +15,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_30_103650) do
   enable_extension "pg_catalog.plpgsql"
 
   create_table "chat_sessions", force: :cascade do |t|
-    t.string "user_id"
-    t.jsonb "data"
+    t.string "user_id", null: false
+    t.jsonb "data", default: [], null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
