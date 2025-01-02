@@ -23,8 +23,8 @@ class ChatsControllerTest < ActionDispatch::IntegrationTest
       assert_includes(@response.content_type, "text/vnd.turbo-stream.html")
 
       assert_match(%r{<turbo-stream action="append" target="chat_messages">}, @response.body)
-      assert_match(%r{<span class="">#{@user_message}</span>}, @response.body)
-      assert_match(%r{<span class="">Response from LLM.</span>}, @response.body)
+      assert_match(%r{<span>#{@user_message}</span>}, @response.body)
+      assert_match(%r{<span>Response from LLM.</span>}, @response.body)
     end
   end
 
