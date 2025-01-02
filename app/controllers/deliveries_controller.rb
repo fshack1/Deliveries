@@ -16,7 +16,7 @@ class DeliveriesController < ApplicationController
       deliveries = deliveries.where(pickup_address: params[:pickup_address])
     end
 
-    @pagy, @records = pagy(deliveries.order(created_at: :desc), limit: 3)
+    @pagy, @records = pagy(deliveries.order(created_at: :desc), limit: 7)
     @total_cost = Delivery.sum(:cost)
   end
 
@@ -71,7 +71,7 @@ class DeliveriesController < ApplicationController
     @total_cost = deliveries.sum(:cost)
 
     respond_to do |format|
-      format.html { render partial: "cost_breakdown", locals: { deliveries:, total_cost: @total_cost } }
+      format.html { render template: "deliveries/total_cost", locals: { deliveries:, total_cost: @total_cost } }
     end
   end
 
