@@ -6,7 +6,6 @@ class ChatsController < ApplicationController
 
 
   def index
-    @messages = @chat_session.conversation
   end
 
   def create
@@ -17,7 +16,7 @@ class ChatsController < ApplicationController
       return
     end
 
-    updated_conversation = @chat_session.conversation << { role: "user", content: user_message }
+    updated_conversation = [ { role: "user", content: user_message } ]
 
     begin
       deliveries = Delivery.all
@@ -28,7 +27,8 @@ class ChatsController < ApplicationController
       )
 
       @chat_session.update_conversation!(updated_conversation)
-      @new_messages = updated_conversation.last(2)
+
+      @new_messages = updated_conversation.reject { |message| message[:role] == "system" }
 
     rescue => e
       Rails.logger.error("Chat error: #{e.message}")

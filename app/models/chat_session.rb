@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class ChatSession < ApplicationRecord
+  attribute :data, :jsonb, default: []
+
   def conversation
-    self.data ||= []
+    self.data || []
   end
 
   def update_conversation!(new_conversation)

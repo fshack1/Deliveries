@@ -1,16 +1,16 @@
 
 .chat-window {
-  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, .12);
+  padding: 10px;
   display: flex;
   flex-direction: column;
   margin: 40px;
-  background-color: #eee6fd;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 .chat-window button {
-  width: auto;
   align-self: flex-end;
+  padding: 1px 10px 1px 10px;
 }
 
 .chat-messages {
@@ -23,15 +23,19 @@
   margin: 5px;
   padding: 10px;
   font-size: 16px;
-}
-
-.assistant {
+  align-items: center;
+  border-radius: 8px;
+  background-color: var(--color-bg-hover);
   align-self: start;
 }
 
-.user {
+.chat-message.user {
   align-self: end;
+  background-color: #87cefa !important;
 }
+
+.chat-message.error {
+  background-color: #ffdcdc !important}
 
 .chat-form {
   align-self: center;
@@ -44,8 +48,12 @@
   padding: 20px;
 }
 
-.form-label {
+.chat-form-label {
   min-width: 100%;
+}
+
+.chat-form-field {
+  padding: 16px;
 }
 
 .chat-submit {
