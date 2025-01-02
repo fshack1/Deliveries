@@ -1,0 +1,11 @@
+:queues:
+  - default
+  - critical
+  - low
+
+:scheduler:
+  :schedule:
+    cleanup_chat_sessions:
+      cron: "35 14 * * *"
+      class: "CleanupChatSessionsJob"
+      queue: default

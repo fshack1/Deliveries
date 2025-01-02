@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_22_161459) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_30_103650) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "chat_sessions", force: :cascade do |t|
+    t.string "user_id", null: false
+    t.jsonb "data", default: [], null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "deliveries", force: :cascade do |t|
     t.string "pickup_address", null: false

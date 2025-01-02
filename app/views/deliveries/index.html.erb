@@ -12,9 +12,20 @@
   <div style="text-align: right;">
     <%= button_to("New delivery", new_delivery_path, method: :get, class: "mdc-button mdc-button--raised") %>
   </div>
+
   <% if @records.any? %>
     <%= delivery_filters %>
     <%= render(partial: "deliveries", locals: {records: @records, total_cost: @total_cost, pagy: @pagy}) %>
+
+    <turbo-frame id="chat-button-frame">
+      <div style="text-align: right; padding-top: 10px">
+        <%= button_to("Chat with AI", chats_path, method: :get, data: { turbo_stream: true }, class: "mdc-button--outlined") %>
+      </div>
+    </turbo-frame>
+
+    <turbo-frame id="chat-window">
+    </turbo-frame>
+
   <% elsif @total_records.any? %>
     <%= delivery_filters %>
     <%= render(partial: "empty_table") %>

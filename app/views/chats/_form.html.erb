@@ -1,0 +1,21 @@
+<%= form_with(url: chats_path, method: :post, local: false, data: { turbo_stream: true, action: "turbo:submit-end->chat#clearInput" }) do |form| %>
+  <div class="chat-input">
+    <label class="chat-form-label mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-text-field--no-label mdc-text-field--auto-adjust-height">
+      <span class="mdc-notched-outline">
+        <span class="mdc-notched-outline__leading"></span>
+        <span class="mdc-notched-outline__trailing"></span>
+      </span>
+
+      <%= form.text_area(:message,
+        class: "chat-form-field mdc-text-field__input",
+        placeholder: "Chat with the AI assistant ...",
+        data: { "chat-target": "inputfield" },
+        aria: { label: "Chat with the AI assistant ..." }
+      ) %>
+    </label>
+
+    <div class="chat-submit">
+      <%= form.submit("Send", class: "mdc-button--outlined") %>
+    </div>
+  </div>
+<% end %>
