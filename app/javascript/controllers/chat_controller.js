@@ -1,6 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
+  static targets = ["inputfield"]
+
   closeChat() {
     const chatWindow = document.getElementById("chat-window");
     chatWindow.outerHTML = `
@@ -18,5 +20,11 @@ export default class extends Controller {
       </turbo-frame>
     `;
     document.getElementById("chat-window").insertAdjacentHTML("beforebegin", chatButtonFrame);
-  }  
+  }
+
+  clearInput(event) {
+    if (event.detail.success) {
+      this.inputfieldTarget.value = ""
+    }
+  }
 }
