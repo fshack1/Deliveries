@@ -70,6 +70,7 @@ group :test do
   gem "selenium-webdriver"
   gem "factory_bot_rails"
   gem "rails-controller-testing"
+  gem "minitest-stub_any_instance"
 end
 
 group :development, :test do
