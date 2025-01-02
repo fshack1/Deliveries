@@ -1,9 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  connect() {
-  }
-
   closeChat() {
     const chatWindow = document.getElementById("chat-window");
     chatWindow.outerHTML = `
