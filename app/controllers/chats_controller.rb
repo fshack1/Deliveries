@@ -6,6 +6,10 @@ class ChatsController < ApplicationController
 
 
   def index
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to deliveries_path }
+    end
   end
 
   def create
