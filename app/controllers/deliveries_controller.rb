@@ -16,7 +16,7 @@ class DeliveriesController < ApplicationController
       deliveries = deliveries.where(pickup_address: params[:pickup_address])
     end
 
-    @pagy, @records = pagy(deliveries.order(created_at: :desc), limit: 3)
+    @pagy, @records = pagy(deliveries.order(created_at: :desc), limit: 7)
     @total_cost = Delivery.sum(:cost)
   end
 
