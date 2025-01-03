@@ -1,13 +1,13 @@
 .routes-header {
+  align-items: baseline;
   display: flex;
   flex-direction: row;
-  align-items: baseline;
 }
 
 .routes-container {
   display: flex;
   flex-direction: column;
-  margin: 8px 0px 8px 8px ;
+  margin: 8px 0px 8px 8px;
 }
 
 .deliveries-container {
@@ -18,24 +18,25 @@
 
 .delivery-container {
   border: 1px solid #ccc; 
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  padding: 8px 8px 0px 8px;
-  margin: 8px;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 8px;
   max-width: 350px;
+  padding: 8px 8px 0px 8px;
 }
 
 .delivery-container, a:link {
-  text-decoration: none !important;
   cursor: pointer;
+  text-decoration: none !important;
 }
 
 .delivery-details {
-  display: flex;
   align-items: center;
+  display: flex;
 }
+
 .delivery-details li {
   margin-bottom: 8px;
 }

@@ -1,11 +1,10 @@
-
 .chat-window {
   border: 1px solid rgba(0, 0, 0, .12);
-  padding: 10px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   margin: 40px;
-  border-radius: 5px;
+  padding: 10px;
 }
 
 .chat-window button {
@@ -19,14 +18,14 @@
 }
 
 .chat-message {
+  align-items: center;
+  align-self: start;
+  background-color: var(--color-bg-hover);
+  border-radius: 8px;
   display: flex;
+  font-size: 14px;
   margin: 5px;
   padding: 10px;
-  font-size: 14px;
-  align-items: center;
-  border-radius: 8px;
-  background-color: var(--color-bg-hover);
-  align-self: start;
 }
 
 .chat-message.user {
@@ -35,7 +34,8 @@
 }
 
 .chat-message.error {
-  background-color: #ffdcdc !important}
+  background-color: #ffdcdc !important;
+}
 
 .chat-form {
   align-self: center;
@@ -43,9 +43,9 @@
 }
 
 .chat-input {
+  align-items: baseline;
   display: flex;
   flex-direction: row;
-  align-items: baseline;
   padding: 20px;
 }
 
