@@ -66,6 +66,7 @@ class DeliveriesController < ApplicationController
     end
   end
 
+  # GET /deliveries/total_cost
   def total_cost
     deliveries = Delivery.all.order(id: :desc)
     @total_cost = deliveries.sum(:cost)
@@ -89,7 +90,7 @@ class DeliveriesController < ApplicationController
   end
 
   private def set_delivery
-    @delivery = Delivery.find(params.expect(:id))
+    @delivery = Delivery.find(params[:id])
   end
 
   private def delivery_params

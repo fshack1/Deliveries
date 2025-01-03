@@ -3,22 +3,6 @@ body {
   margin: 14px;
 }
 
-.text-body {
-  font-size: 14px;
-  color: black;
-}
-
-.text-title {
-  font-size: 16px;
-  color: black;
-  align-self: center;
-}
-
-.text-heading {
-  font-size: 20px;
-  color: black;
-}
-
 .bold {
   font-weight: bold !important;
 }
@@ -35,23 +19,39 @@ body {
   text-decoration: none;
 }
 
+.text-body {
+  color: black;
+  font-size: 14px;
+}
+
+.text-heading {
+  color: black;
+  font-size: 20px;
+}
+
+.text-title {
+  align-self: center;
+  color: black;
+  font-size: 16px;
+}
+
 .tooltip {
-  text-decoration: none;
-  cursor: pointer;
   color: var(--color-primary); 
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .tooltip::after {
   content: attr(data-tooltip);
   font-size: 14px;
   font-weight: normal;
-  visibility: hidden;
   left: 50%;
   opacity: 0;
   transition: opacity 0.2s, visibility 0.2s;
+  visibility: hidden;
 }
 
 .tooltip:hover::after, .tooltip:focus::after {
-  visibility: visible;
   opacity: 1;
+  visibility: visible;
 }

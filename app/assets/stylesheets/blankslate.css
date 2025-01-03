@@ -1,21 +1,21 @@
 .blankslate {
+  background-color: var(--color-bg-light);
   border: 1px solid #ccc;
   border-radius: 0.5rem;
-  padding: 20px;
-  max-width: 400px;
   margin: 50px auto;
+  max-width: 400px;
+  padding: 20px;
   text-align: center;
-  background-color: var(--color-bg-light);
 }
 
 .blankslate h2 {
-  font-weight: 500;
   font-size: 20px;
+  font-weight: 500;
   margin-bottom: 10px;
 }
 
 .blankslate p {
+  color: var(--color-primary);
   font-size: 16px;
   font-weight: 400;
-  color: var(--color-primary);
 }
