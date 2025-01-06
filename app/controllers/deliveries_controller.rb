@@ -16,7 +16,7 @@ class DeliveriesController < ApplicationController
       deliveries = deliveries.where(pickup_address: params[:pickup_address])
     end
 
-    @pagy, @records = pagy(deliveries.order(created_at: :desc), limit: 7)
+    @pagy, @records = pagy(deliveries.order(created_at: :desc), limit: 5)
     @total_cost = Delivery.sum(:cost)
   end
 
@@ -71,17 +71,9 @@ class DeliveriesController < ApplicationController
     @deliveries = Delivery.all.order(id: :desc)
     @total_cost = @deliveries.sum(:cost)
 
-    @pagy, @records = pagy_countless(@deliveries, limit: 5)
-
     respond_to do |format|
       format.html
-      format.turbo_stream do
-        render(turbo_stream: turbo_stream.replace(
-          "sideview-content",
-          partial: "deliveries/total_cost_table",
-          locals: { deliveries: @deliveries, total_cost: @total_cost, pagy: @pagy }
-        ))
-      end
+      format.turbo_stream
     end
   end
 

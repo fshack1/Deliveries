@@ -1,5 +1,5 @@
 <div id="sideview-content" data-sideview-target="content">
-  <h2 style="align-self: center" >Total cost breakdown</h2>
+  <h2>Total cost breakdown</h2>
   <div class="mdc-data-table" style="margin: 20px">
     <table class="mdc-data-table__table" aria-label="Cost breakdown table">
       <thead>
@@ -10,12 +10,7 @@
       </thead>
 
       <tbody id="deliveries-table-body" class="mdc-data-table__content">
-        <% deliveries.each do |delivery| %>
-          <tr class="mdc-data-table__row">
-            <td class="mdc-data-table__cell"><%= delivery.id %></td>
-            <td class="mdc-data-table__cell"><%= number_to_currency(delivery.cost, unit: "€") %></td>
-          </tr>
-        <% end %>
+        <%= render(partial: "deliveries/total_cost_rows", collection: deliveries, as: :delivery) %>
       </tbody>
 
       <tfoot>
@@ -26,12 +21,4 @@
       </tfoot>
     </table>
   </div>
-
-  <% if @pagy.next %>
-    <turbo-frame id="load-more" src="<%= total_cost_deliveries_path(page: @pagy.next, format: :turbo_stream) %>" loading="lazy">
-      <div class="loading-placeholder">
-        Loading more...
-      </div>
-    </turbo-frame>
-  <% end %>
 </div>

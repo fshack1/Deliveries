@@ -1,0 +1,3 @@
+<%= turbo_stream.replace("sideview-content", partial: "deliveries/total_cost_table",
+  locals: { deliveries: @deliveries, total_cost: @total_cost }
+) %>
