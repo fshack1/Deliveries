@@ -23,9 +23,7 @@ export default class extends Controller {
     })
       .then(response => {
         if (response.ok) {
-          console.log(response)
           response.text().then(html => {
-            console.log(html)
             this.contentTarget.innerHTML = html;
             this.panelTarget.classList.add("open");
           });
