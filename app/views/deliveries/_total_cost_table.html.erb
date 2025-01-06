@@ -1,0 +1,37 @@
+<div id="sideview-content" data-sideview-target="content">
+  <h2 style="align-self: center" >Total cost breakdown</h2>
+  <div class="mdc-data-table" style="margin: 20px">
+    <table class="mdc-data-table__table" aria-label="Cost breakdown table">
+      <thead>
+        <tr class="mdc-data-table__header-row">
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">ID</th>
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Amount</th>
+        </tr>
+      </thead>
+
+      <tbody id="deliveries-table-body" class="mdc-data-table__content">
+        <% deliveries.each do |delivery| %>
+          <tr class="mdc-data-table__row">
+            <td class="mdc-data-table__cell"><%= delivery.id %></td>
+            <td class="mdc-data-table__cell"><%= number_to_currency(delivery.cost, unit: "€") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+
+      <tfoot>
+        <tr class="mdc-data-table__row">
+          <td class="mdc-data-table__cell"><strong>Total</strong></td>
+          <td class="mdc-data-table__cell"><strong><%= number_to_currency(total_cost, unit: "€") %></strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <% if @pagy.next %>
+    <turbo-frame id="load-more" src="<%= total_cost_deliveries_path(page: @pagy.next, format: :turbo_stream) %>" loading="lazy">
+      <div class="loading-placeholder">
+        Loading more...
+      </div>
+    </turbo-frame>
+  <% end %>
+</div>

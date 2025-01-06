@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody class="mdc-data-table__content">
-      <% deliveries.each do |delivery| %>
+      <% @deliveries.each do |delivery| %>
         <tr class="mdc-data-table__row">
           <td class="mdc-data-table__cell"><%= delivery.id %></td>
           <td class="mdc-data-table__cell"><%= number_to_currency(delivery.cost, unit: "€") %></td>
@@ -22,7 +22,7 @@
     <tfoot>
       <tr class="mdc-data-table__row">
         <td class="mdc-data-table__cell"><strong>Total</strong></td>
-        <td class="mdc-data-table__cell"><strong><%= number_to_currency(total_cost, unit: "€") %></strong></td>
+        <td class="mdc-data-table__cell"><strong><%= number_to_currency(@total_cost, unit: "€") %></strong></td>
       </tr>
     </tfoot>
   </table>

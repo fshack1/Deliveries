@@ -68,11 +68,20 @@ class DeliveriesController < ApplicationController
 
   # GET /deliveries/total_cost
   def total_cost
-    deliveries = Delivery.all.order(id: :desc)
-    @total_cost = deliveries.sum(:cost)
+    @deliveries = Delivery.all.order(id: :desc)
+    @total_cost = @deliveries.sum(:cost)
+
+    @pagy, @records = pagy_countless(@deliveries, limit: 5)
 
     respond_to do |format|
-      format.html { render template: "deliveries/total_cost", locals: { deliveries:, total_cost: @total_cost } }
+      format.html
+      format.turbo_stream do
+        render(turbo_stream: turbo_stream.replace(
+          "sideview-content",
+          partial: "deliveries/total_cost_table",
+          locals: { deliveries: @deliveries, total_cost: @total_cost, pagy: @pagy }
+        ))
+      end
     end
   end
 
