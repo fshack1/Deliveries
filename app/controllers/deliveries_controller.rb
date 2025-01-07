@@ -61,9 +61,7 @@ class DeliveriesController < ApplicationController
   def destroy
     @delivery.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to deliveries_path, status: :see_other, notice: "Delivery was successfully destroyed." }
-    end
+    redirect_to deliveries_path, status: :see_other, notice: "Delivery was successfully destroyed."
   end
 
   # GET /deliveries/total_cost
@@ -83,10 +81,6 @@ class DeliveriesController < ApplicationController
 
     @optimized_routes = grouped_deliveries.transform_values do |group|
       group.sort_by(&:distance)
-    end
-
-    respond_to do |format|
-      format.html { render :optimized_routes, locals: { optimized_routes: @optimized_routes } }
     end
   end
 
