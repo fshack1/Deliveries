@@ -17,8 +17,8 @@ class ChatsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "create" do
-    conversation = { role: "user", content: @user_message }
-    LlmService.stub(:chat_with_llm, [ conversation, { role: "assistant", content: "Response from LLM." } ]) do
+    conversation = { "role" => "user", "content" => @user_message }
+    LlmService.stub(:chat_with_llm, [ conversation, { "role" => "assistant", "content" => "Response from LLM." } ]) do
       post(chats_url, params: { message: @user_message }, headers: { "Accept" => "text/vnd.turbo-stream.html" })
 
       assert_response(:success)

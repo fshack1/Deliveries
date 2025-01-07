@@ -5,7 +5,7 @@ require "test_helper"
 
 class LlmServiceTest < ActiveSupport::TestCase
   setup do
-    @conversation = [ { role: "user", content: "Hello" } ]
+    @conversation = [ { "role" => "user", "content" => "Hello" } ]
     @deliveries = [ { id: 1, status: "delivered" } ]
   end
 
@@ -17,7 +17,7 @@ class LlmServiceTest < ActiveSupport::TestCase
 
       assert_equal(3, result.size)
       assert_equal("assistant", result.last["role"])
-      assert_equal("Hello! How can I assist you today?", result.last[:content])
+      assert_equal("Hello! How can I assist you today?", result.last["content"])
     end
   end
 
@@ -31,7 +31,7 @@ class LlmServiceTest < ActiveSupport::TestCase
 
       assert_equal(3, result.size)
       assert_equal("assistant", result.last["role"])
-      assert_match("Error: An unexpected issue occurred. Please try again later.", result.last[:content])
+      assert_match("Error: An unexpected issue occurred. Please try again later.", result.last["content"])
     end
   end
 
@@ -45,7 +45,7 @@ class LlmServiceTest < ActiveSupport::TestCase
 
       assert_equal(3, result.size)
       assert_equal("assistant", result.last["role"])
-      assert_match("Error: An unexpected issue occurred. Please try again later.", result.last[:content])
+      assert_match("Error: An unexpected issue occurred. Please try again later.", result.last["content"])
     end
   end
 
@@ -54,6 +54,6 @@ class LlmServiceTest < ActiveSupport::TestCase
 
     assert_equal(2, result.size)
     assert_equal("system", result.first["role"])
-    assert_match("You have access to the following deliveries data:", result.first[:content])
+    assert_match("You have access to the following deliveries data:", result.first["content"])
   end
 end
