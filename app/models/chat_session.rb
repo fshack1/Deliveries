@@ -2,7 +2,7 @@
 
 class ChatSession < ApplicationRecord
   def conversation
-    self.data || []
+    self.data
   end
 
   def update_conversation!(new_conversation)

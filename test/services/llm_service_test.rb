@@ -16,7 +16,7 @@ class LlmServiceTest < ActiveSupport::TestCase
       result = LlmService.chat_with_llm(conversation: @conversation, deliveries: @deliveries)
 
       assert_equal(3, result.size)
-      assert_equal("assistant", result.last[:role])
+      assert_equal("assistant", result.last["role"])
       assert_equal("Hello! How can I assist you today?", result.last[:content])
     end
   end
@@ -30,7 +30,7 @@ class LlmServiceTest < ActiveSupport::TestCase
       result = LlmService.chat_with_llm(conversation: @conversation, deliveries: @deliveries)
 
       assert_equal(3, result.size)
-      assert_equal("assistant", result.last[:role])
+      assert_equal("assistant", result.last["role"])
       assert_match("Error: An unexpected issue occurred. Please try again later.", result.last[:content])
     end
   end
@@ -44,7 +44,7 @@ class LlmServiceTest < ActiveSupport::TestCase
       result = LlmService.chat_with_llm(conversation: @conversation, deliveries: @deliveries)
 
       assert_equal(3, result.size)
-      assert_equal("assistant", result.last[:role])
+      assert_equal("assistant", result.last["role"])
       assert_match("Error: An unexpected issue occurred. Please try again later.", result.last[:content])
     end
   end
@@ -53,7 +53,7 @@ class LlmServiceTest < ActiveSupport::TestCase
     result = LlmService.prepare_conversation(@conversation, @deliveries)
 
     assert_equal(2, result.size)
-    assert_equal("system", result.first[:role])
+    assert_equal("system", result.first["role"])
     assert_match("You have access to the following deliveries data:", result.first[:content])
   end
 end
