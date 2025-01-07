@@ -2,8 +2,9 @@
   <turbo-frame id="chat-window">
     <div class="chat-window">
       <button class="material-symbols-outlined mdc-button--outlined" data-action="click->chat#closeChat" aria-label="Close chat">close</button>
-      <%= render(partial: "chats/message", locals: { message: "Ask me a question about the deliveries ...", role: "assistant" }) %>
+      <%= render(partial: "chats/message", locals: { message: { "role" => "assistant", "content" => "Ask me a question about the deliveries ..." } }) %>
       <div class="chat-messages" id="chat_messages">
+        <%= render partial: "chats/message", collection: @messages, as: :message %>
       </div>
       <div class="chat-form">
         <%= render(partial: "chats/form") %>

@@ -5,6 +5,8 @@ class ChatsController < ApplicationController
   before_action :find_or_initialize_chat_session
 
   def index
+    @messages = @chat_session.data.reject { |message| message["role"] == "system" }
+
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to deliveries_path }
@@ -54,7 +56,7 @@ class ChatsController < ApplicationController
         render turbo_stream: turbo_stream.append(
           "chat_messages",
           partial: "chats/message",
-          locals: { message: message, role: "error" }
+          locals: { message: { "role" => "error", "content" => message } }
         )
       end
     end
