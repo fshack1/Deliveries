@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="sideview"
 export default class extends Controller {
-  static targets = ["content", "panel"];
+  static targets = ["content", "url", "panel"];
 
   connect() {
     document.addEventListener("mousedown", this.handleOutsideClick.bind(this));
@@ -14,8 +14,8 @@ export default class extends Controller {
 
   openView(event) {
     event.preventDefault();
-    const url = event.currentTarget.querySelector("a").href;
-  
+    const url = this.urlTarget.href;
+
     fetch(url, {
       headers: {
         Accept: "text/vnd.turbo-stream.html"
