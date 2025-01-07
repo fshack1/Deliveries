@@ -4,14 +4,6 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = ["content", "url", "panel"];
 
-  connect() {
-    document.addEventListener("mousedown", this.handleOutsideClick.bind(this));
-  }
-
-  disconnect() {
-    document.removeEventListener("mousedown", this.handleOutsideClick.bind(this))
-  }
-
   openView(event) {
     event.preventDefault();
     const url = this.urlTarget.href;
@@ -26,6 +18,7 @@ export default class extends Controller {
           response.text().then(html => {
             this.contentTarget.innerHTML = html;
             this.panelTarget.classList.add("open");
+            document.addEventListener("mousedown", this.handleOutsideClick.bind(this));
           });
         } else {
           console.error("Failed to fetch Turbo Stream content:", response);
@@ -39,6 +32,7 @@ export default class extends Controller {
   closeView() {
     this.panelTarget.classList.remove("open");
     this.contentTarget.innerHTML = "";
+    document.removeEventListener("mousedown", this.handleOutsideClick.bind(this))
   }
 
   handleOutsideClick(event) {
