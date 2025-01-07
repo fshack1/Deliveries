@@ -1,3 +1,1 @@
-<% @new_messages.each do |message| %>
-  <%= turbo_stream.append "chat_messages", partial: "chats/message", locals: { message: message[:content], role: message[:role] } %>
-<% end %>
+<%= turbo_stream.append("chat_messages", partial: "chats/message", collection: @new_messages, as: :message) %>

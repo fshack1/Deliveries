@@ -3,9 +3,7 @@
 class LlmService
   require "openai"
 
-  def self.chat_with_llm(conversation:, deliveries: nil)
-    return unless deliveries
-
+  def self.chat_with_llm(conversation:, deliveries:)
     conversation = prepare_conversation(conversation, deliveries)
 
     client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"])
@@ -13,31 +11,36 @@ class LlmService
       parameters: {
         model:       "gpt-3.5-turbo",
         messages:    conversation,
-        max_tokens:  150,
+        max_tokens:  150, # max token for response
         temperature: 0.7
       }
     )
 
     assistant_content = response.dig("choices", 0, "message", "content").to_s.strip
-    conversation << { role: "assistant", content: assistant_content }
+    conversation << { "role" => "assistant", "content" => assistant_content }
 
     conversation
 
   rescue OpenAI::Error => e
     log_error("OpenAI API Error", e.response.body)
-    conversation << { role: "assistant", content: error_message("service") }
+    conversation << { "role" => "assistant", "content" => error_message("service") }
     conversation
   rescue StandardError => e
     log_error("Unexpected Error", e.message)
-    conversation << { role: "assistant", content: error_message("unexpected") }
+    conversation << { "role" => "assistant", "content" => error_message("unexpected") }
     conversation
   end
 
   def self.prepare_conversation(conversation, deliveries)
-    conversation.unshift(
-      role: "system",
-      content: build_deliveries_prompt(deliveries)
-    )
+    conversation = conversation.map(&:stringify_keys)
+    if conversation.any? { |message| message["role"] == "system" }
+      conversation
+    else
+      conversation.unshift(
+        "role" => "system",
+        "content" => build_deliveries_prompt(deliveries)
+      )
+    end
   end
 
   private_class_method def self.build_deliveries_prompt(deliveries)
@@ -48,10 +51,6 @@ class LlmService
       #{summary}
       Provide answers based on this data where relevant. Include any relevant details in your response.
     MSG
-  end
-
-  private_class_method def self.token_count(conversation)
-    conversation.sum { |msg| msg[:content].to_s.length }
   end
 
   private_class_method def self.log_error(error_type, message)
