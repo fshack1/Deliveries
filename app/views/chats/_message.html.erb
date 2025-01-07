@@ -1,4 +1,6 @@
-<div class="chat-message <%= role %>">
-  <span class="material-symbols-outlined" style="padding-right: 5px;"><%= role =="user" ? "person" : "smart_toy" %></span>
-  <span><%= message %></span>
+<%# locals: (message:) -%>
+
+<div class="chat-message <%= message["role"] %>">
+  <span class="material-symbols-outlined" style="padding-right: 5px;"><%= message["role"] == "user" ? "person" : "smart_toy" %></span>
+  <span><%= message["content"] %></span>
 </div>
