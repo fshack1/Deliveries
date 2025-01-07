@@ -45,7 +45,10 @@ class DeliveriesTest < ApplicationSystemTestCase
 
   test "should destroy delivery" do
     visit delivery_url(@delivery)
-    click_on "Destroy this delivery", match: :first
+
+    accept_confirm do
+      click_on "Destroy this delivery", match: :first
+    end
 
     assert_text "Delivery was successfully destroyed"
   end
