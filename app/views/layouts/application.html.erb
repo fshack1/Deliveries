@@ -31,7 +31,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body data-controller="chat">
+  <body data-controller="chat sideview">
     <%= yield %>
+
+    <%= render("layouts/sideview") %>
   </body>
 </html>

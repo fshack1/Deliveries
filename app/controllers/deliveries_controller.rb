@@ -16,7 +16,7 @@ class DeliveriesController < ApplicationController
       deliveries = deliveries.where(pickup_address: params[:pickup_address])
     end
 
-    @pagy, @records = pagy(deliveries.order(created_at: :desc), limit: 7)
+    @pagy, @records = pagy(deliveries.order(created_at: :desc), limit: 5)
     @total_cost = Delivery.sum(:cost)
   end
 
@@ -61,18 +61,17 @@ class DeliveriesController < ApplicationController
   def destroy
     @delivery.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to deliveries_path, status: :see_other, notice: "Delivery was successfully destroyed." }
-    end
+    redirect_to deliveries_path, status: :see_other, notice: "Delivery was successfully destroyed."
   end
 
   # GET /deliveries/total_cost
   def total_cost
-    deliveries = Delivery.all.order(id: :desc)
-    @total_cost = deliveries.sum(:cost)
+    @deliveries = Delivery.all.order(id: :desc)
+    @total_cost = @deliveries.sum(:cost)
 
     respond_to do |format|
-      format.html { render template: "deliveries/total_cost", locals: { deliveries:, total_cost: @total_cost } }
+      format.html
+      format.turbo_stream
     end
   end
 
@@ -82,10 +81,6 @@ class DeliveriesController < ApplicationController
 
     @optimized_routes = grouped_deliveries.transform_values do |group|
       group.sort_by(&:distance)
-    end
-
-    respond_to do |format|
-      format.html { render :optimized_routes, locals: { optimized_routes: @optimized_routes } }
     end
   end
 

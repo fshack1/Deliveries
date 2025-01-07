@@ -1,0 +1,6 @@
+<%= link_to(deliveries_path, class: "mdc-button mdc-button--outlined") do %>
+  <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+  Back to deliveries
+<% end %>
+
+<%= render(partial: "total_cost_table", locals: {deliveries: @deliveries, total_cost: @total_cost}) %>

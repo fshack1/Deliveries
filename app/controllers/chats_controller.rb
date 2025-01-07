@@ -51,14 +51,8 @@ class ChatsController < ApplicationController
   end
 
   private def render_error_message(message)
-    respond_to do |format|
-      format.turbo_stream do
-        render(turbo_stream: turbo_stream.append(
-          "chat_messages",
-          partial: "chats/message",
-          locals: { message: { "role" => "error", "content" => message } }
-        ))
-      end
-    end
+    render(turbo_stream: turbo_stream.append("chat_messages", partial: "chats/message",
+      locals: { message: { "role" => "error", "content" => message } }
+    ))
   end
 end

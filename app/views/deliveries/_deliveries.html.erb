@@ -17,17 +17,16 @@
     </thead>
 
     <tbody class="mdc-data-table__content">
-      <% records.each do |delivery| %>
-        <%= render(partial: "delivery_row", locals: { delivery: delivery }) %>
-      <% end %>
+      <%= render(partial: "delivery_row", collection: records, as: :delivery) %>
 
       <tr class="mdc-data-table__row" id="total_cost">
-        <td class="mdc-data-table__cell" colspan="9" style="text-align: right">
-          <%= link_to total_cost_deliveries_path do %>
+        <td class="mdc-data-table__cell" colspan="9" style="text-align: right" data-action="click->sideview#openView">          
+          <%= link_to(total_cost_deliveries_path, class: "mdc-button mdc-button--outlined", data: { turbo: false, sideview_target: "url" }) do %>
             Total Cost: <%= number_to_currency(total_cost, unit: "€") %>
           <% end %>
         </td>
       </tr>
+
     </tbody>
   </table>
 

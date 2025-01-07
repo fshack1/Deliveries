@@ -1,0 +1,24 @@
+<div id="sideview-content" data-sideview-target="content">
+  <h2>Total cost breakdown</h2>
+  <div class="mdc-data-table" style="margin: 20px">
+    <table class="mdc-data-table__table" aria-label="Cost breakdown table">
+      <thead>
+        <tr class="mdc-data-table__header-row">
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">ID</th>
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Amount</th>
+        </tr>
+      </thead>
+
+      <tbody id="deliveries-table-body" class="mdc-data-table__content">
+        <%= render(partial: "deliveries/total_cost_rows", collection: deliveries, as: :delivery) %>
+      </tbody>
+
+      <tfoot>
+        <tr class="mdc-data-table__row">
+          <td class="mdc-data-table__cell"><strong>Total</strong></td>
+          <td class="mdc-data-table__cell"><strong><%= number_to_currency(total_cost, unit: "€") %></strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
