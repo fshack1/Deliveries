@@ -10,6 +10,6 @@ class ChatSession < ApplicationRecord
   end
 
   def self.cleanup_old_sessions
-    where("updated_at < ?", 2.hours.ago).destroy_all
+    where("updated_at < ?", 30.minutes.ago).destroy_all
   end
 end

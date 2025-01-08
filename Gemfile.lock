@@ -285,6 +285,8 @@ GEM
       faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
+    rufus-scheduler (3.9.2)
+      fugit (~> 1.1, >= 1.11.1)
     securerandom (0.4.1)
     selenium-webdriver (4.27.0)
       base64 (~> 0.2)
@@ -297,6 +299,10 @@ GEM
       logger
       rack (>= 2.2.4)
       redis-client (>= 0.22.2)
+    sidekiq-scheduler (5.0.6)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 6, < 8)
+      tilt (>= 1.4.0, < 3)
     solid_cable (3.0.5)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -322,6 +328,7 @@ GEM
     thruster (0.1.10-arm64-darwin)
     thruster (0.1.10-x86_64-darwin)
     thruster (0.1.10-x86_64-linux)
+    tilt (2.5.0)
     timeout (0.4.3)
     turbo-rails (2.0.11)
       actionpack (>= 6.0.0)
@@ -374,6 +381,7 @@ DEPENDENCIES
   ruby-openai
   selenium-webdriver
   sidekiq
+  sidekiq-scheduler
   solid_cable
   solid_cache
   solid_queue
