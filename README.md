@@ -52,9 +52,9 @@ rails db:seed
 ```
 
 ### Clear Chat Sessions
-To clear old chat sessions created during LLM interaction, you can run the following in the Rails console:
+The CleanupChatSessionsJob runs in the background using Sidekiq to automatically delete expired chat sessions. This requires redis to be running. Start Redis with:
 ```bash
-CleanupChatSessionsJob.perform_later
+redis-server
 ```
 
 ---

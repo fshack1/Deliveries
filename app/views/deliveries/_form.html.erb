@@ -1,15 +1,4 @@
 <%= form_with(model: delivery, data: { controller: "form" }) do |form| %>
-  <% if delivery.errors.any? %>
-    <div style="color: var(--color-status-error)">
-      <h2><%= pluralize(delivery.errors.count, "error") %> prohibited this delivery from being saved:</h2>
-      <ul>
-        <% delivery.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="mdc-text-field mdc-text-field--filled">
     <span class="mdc-text-field__ripple"></span>
     <label for="pickup_address" class="mdc-floating-label">Pickup address</label>

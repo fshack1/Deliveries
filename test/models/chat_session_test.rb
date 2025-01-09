@@ -21,9 +21,9 @@ class ChatSessionTest < ActiveSupport::TestCase
     assert_equal(new_conversation, @chat_session.data)
   end
 
-  test "cleanup_old_sessions destroys sessions older than 2 hours" do
-    old_session = ChatSession.create!(data: [], updated_at: 3.hours.ago, user_id: 1)
-    recent_session = ChatSession.create!(data: [], updated_at: 1.hour.ago, user_id: 1)
+  test "cleanup_old_sessions destroys sessions older than 30 minutes" do
+    old_session = ChatSession.create!(data: [], updated_at: 30.minutes.ago, user_id: 1)
+    recent_session = ChatSession.create!(data: [], updated_at: 10.minutes.ago, user_id: 1)
 
     ChatSession.cleanup_old_sessions
 

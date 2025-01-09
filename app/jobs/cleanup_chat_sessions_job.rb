@@ -1,5 +1,5 @@
 class CleanupChatSessionsJob < ApplicationJob
-  def perform(*args)
+  def perform
     ChatSession.cleanup_old_sessions
   end
 end
