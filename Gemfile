@@ -21,6 +21,7 @@ gem "jbuilder"
 # gem "bcrypt", "~> 3.1.7"
 gem "pagy"
 
+gem "devise", "~> 4.9"
 # LLM
 gem "ruby-openai"
 
