@@ -85,6 +85,17 @@ class DeliveriesController < ApplicationController
     end
   end
 
+
+  def summary
+    authorize! :summary, Delivery
+
+    summary = LlmService.summarize_with_llm(
+      deliveries:  Delivery.all
+    )
+
+    @summary = summary.last(1)
+  end
+
   private def set_delivery
     @delivery = Delivery.find(params[:id])
   end

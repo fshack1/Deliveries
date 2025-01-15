@@ -16,6 +16,12 @@
     <%= delivery_filters %>
     <%= render(partial: "deliveries", locals: {records: @records, total_cost: @total_cost, pagy: @pagy}) %>
 
+    <% if can? :summary, Delivery %>
+      <turbo-frame id="summary-button-frame">
+        <%= link_to 'View Delivery Summary', summary_deliveries_path, method: :post %>
+      </turbo-frame>
+    <% end %>
+
     <turbo-frame id="chat-button-frame">
       <div style="text-align: right; padding-top: 10px">
         <%= button_to("Chat with AI", chats_path, method: :get, data: { turbo_stream: true }, class: "mdc-button--outlined") %>
