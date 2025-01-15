@@ -2,6 +2,7 @@
 
 class DeliveriesController < ApplicationController
   before_action :set_delivery, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[summary]
 
   # GET /deliveries
   def index

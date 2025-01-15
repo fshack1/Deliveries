@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ChatsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user_id
   before_action :find_or_initialize_chat_session
 
