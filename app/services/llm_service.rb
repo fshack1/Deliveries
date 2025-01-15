@@ -31,6 +31,32 @@ class LlmService
     conversation
   end
 
+  def self.summarize_with_llm(deliveries:)
+    summary = deliveries.to_json
+
+    conversation = [
+      { "role" => "system", "content" => "Please give a summary of the following data: #{summary}" }
+    ]
+
+
+    client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"])
+
+    response = client.chat(
+      parameters: {
+        model:       "gpt-3.5-turbo",
+        messages:    conversation,
+        max_tokens:  150, # max token for response
+        temperature: 0.7
+      }
+    )
+
+    assistant_content = response.dig("choices", 0, "message", "content").to_s.strip
+    conversation << { "role" => "assistant", "content" => assistant_content }
+
+    conversation
+  end
+
+
   def self.prepare_conversation(conversation, deliveries)
     conversation = conversation.map(&:stringify_keys)
     if conversation.any? { |message| message["role"] == "system" }

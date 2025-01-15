@@ -2,6 +2,7 @@
 
 class DeliveriesController < ApplicationController
   before_action :set_delivery, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[summary]
 
   # GET /deliveries
   def index
@@ -82,6 +83,17 @@ class DeliveriesController < ApplicationController
     @optimized_routes = grouped_deliveries.transform_values do |group|
       group.sort_by(&:distance)
     end
+  end
+
+
+  def summary
+    authorize! :summary, Delivery
+
+    summary = LlmService.summarize_with_llm(
+      deliveries:  Delivery.all
+    )
+
+    @summary = summary.last(1)
   end
 
   private def set_delivery

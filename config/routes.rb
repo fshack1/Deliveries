@@ -1,6 +1,7 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
+  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   mount Sidekiq::Web => "/sidekiq"
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
     collection do
       get :optimized_routes
       get :total_cost
+      get :summary
     end
   end
 
